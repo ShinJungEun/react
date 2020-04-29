@@ -139,5 +139,9 @@ import { App } from './App.js';
         "build": "npx webpack",
         "start": "npx webpack-dev-server"
     }
+7. 화면 디자인
+8. 컴포넌트 작성 + 조합(중요*)
+9. 속성 + 상태
+
 
 <pre>
