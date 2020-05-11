@@ -1,4 +1,5 @@
-## 내용 요약
+## React Practces
+
 <pre>
 [project-ex01]
 ES6 for React
@@ -144,4 +145,4 @@ import { App } from './App.js';
 9. 속성 + 상태
 
 
-<pre>
+</pre>

@@ -46,7 +46,7 @@ export default class Card extends React.Component {
 
 Card.propTypes = {
     // Custom Proptype Validator
-    title: (props, propName, component) => (!props[propName] || typeof props[propName] !== 'number' || props[propName].length > 50) ? new Error(`${propName} in ${component} is longer than 50 Characters`) : null,
+    title: (props, propName, component) => (!props[propName] || typeof props[propName] !== 'String' || props[propName].length > 50) ? new Error(`${propName} in ${component} is longer than 50 Characters`) : null,
     description: PropTypes.string.isRequired,
     color: PropTypes.string,
     task: PropTypes.arrayOf(PropTypes.string)
