@@ -27,11 +27,11 @@
     
         1) 어떤 컴포넌트가 상태 또는 순수가 되어야 하는가?
            - 상태를 기반으로 UI를 렌더링하는 컴포넌트
-           - 공통 부모 컴포넌트
+           - 공통 부모 컴포넌트 -> 상태 컴포넌트 ex) emaillist-app
+           - 계층 구조상 상위에 있는 컴포넌트가 -> 상태 컴포넌트 ex) emaillist-app
+           - 못찾겠으면 일부러라도 계층적으로 상위에 있는 상태 컴포넌트를 만들어서 상태관리하도록 한다.
            - 
-           - if not found, create a new component to hold the state and add it in the hierarchy above the common owner component
-           - 
-        2) emaillist: The Good Application to 1)
+        2) emaillist: 적용 예
            - EmailListApp : Stateful Component
            - Emaillist, SearchBar : Pure Component
 
@@ -40,5 +40,26 @@
        - 리액트 애플리케이션에서는 데이터는 컴포넌트 계층에서 위->아래(부모->자식) : 리액트는 아주 명시적이고 분명하다.
        - 하지만 거의 모든 애플리케이션에서는 아래->위 통신해야 하는 경우가 반드시 있음
     3.2 emaillist 에서 아래->위 통신 구현해보기
-    3.3 kanban-app task 추가, 삭제 구현 ? 
+
+4. Component Lifecircle
+    1) methods invoked when Mounting
+    [consructor] -> [componentWillMount] (x) -> [render] -> [componentDidMount]
+
+   2) method invoked when Unmounting
+    [componentWillUnmount]
+
+   3) methods invoked when Props Changes
+    [componentWillReceiveProps] -> [shoudComponentUpdate] (x) -> [componentWillUpdate] (x) -> [render] -> [componentDidUpdate(prevProps, prevState, snapshot)]
+                                   [getSnapshotBeforeUpdate(prevProps, prevState)] : override
+
+   4) methods invoked when State Change
+                                   [shoudComponentUpdate] (x) -> [componentWillUpdate] (x) -> [render] -> [componentDidUpdate(prevProps, prevState, snapshot)]
+                                   [getSnapshotBeforeUpdate(prevProps, prevState)] : override
+
+5. 주의할 점
+(x) -> has been removed! so that Don't Use
+Alternatives:
+    componentWillMount -> consructor
+    shoudComponentUpdate / componentWillUpdate -> Override getSnapshotBeforeUpdate(...)
+
 </pre>

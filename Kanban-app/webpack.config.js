@@ -8,10 +8,21 @@ const path = require('path');
         },
         module: {
             rules: [{
-                test: /\.js$/,
+                test: /\.js$/i,
                 exclude: /node_modules/,
                 loader: 'babel-loader'
-            }]
+            }, {
+                test: /\.css$/i,
+                loader: [{
+                    loader: 'style-loader'
+                }, {
+                    loader: 'css-loader',
+                    options: {
+                        modules: true
+                    }
+                }]
+            }
+        ]
         },
         devServer: {
             contentBase: path.resolve('public'),
